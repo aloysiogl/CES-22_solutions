@@ -1,4 +1,4 @@
-#CES-22 Solutions by Aloysio Galvão Lopes
+# CES-22 Solutions by Aloysio Galvão Lopes
 
 The solutions are organized in week folders. Ex:
 
