@@ -1,6 +1,8 @@
 # CES-22 Solutions by Aloysio Galvão Lopes
 
-The solutions are organized in week folders. Ex:
+The solutions are organized in week folders.
+
+Ex:
 
 /Week1/ex1/exercise1.py
 
