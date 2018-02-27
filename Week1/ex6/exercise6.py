@@ -50,7 +50,7 @@ def drawPoly(nSides, turtle, side = 50):
 
     turtle.hideturtle()
 
-# My turtle example
+# Getting screen
 
 wn = turtle.Screen()
 
