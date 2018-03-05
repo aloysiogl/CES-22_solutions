@@ -17,12 +17,12 @@ def test(did_pass):
     print(msg)
 
 
-def add_vectors(u, v):
+def scalar_mult(s, v):
     """This function adds vectors"""
-    sum = [0]*len(u)
+    mult = [0]*len(v)
 
-    for i in range(0, len(u)):
-        sum[i] = u[i] + v[i]
+    for i in range(0, len(v)):
+        sum[i] = s*v[i]
 
     return sum
 
@@ -30,6 +30,6 @@ def add_vectors(u, v):
 # Tests
 
 
-test(add_vectors([1, 1], [1, 1]) == [2, 2])
-test(add_vectors([1, 2], [1, 4]) == [2, 6])
-test(add_vectors([1, 2, 1], [1, 4, 3]) == [2, 6, 4])
+test(scalar_mult(5, [1, 2]) == [5, 10])
+test(scalar_mult(3, [1, 0, -1]) == [3, 0, -3])
+test(scalar_mult(7, [3, 0, 5, 11, 2]) == [21, 0, 35, 77, 14])
