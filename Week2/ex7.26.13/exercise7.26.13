@@ -1,0 +1,7 @@
+This exercise is just written.
+
+The drawable houses are the ones which have an odd number of edges connecting to all vertices or the ones which exactly two vertices connect to a even number of edges.
+
+The drawings which apply to these rules are (from left to right):
+
+1, 2, 5 and 6.
