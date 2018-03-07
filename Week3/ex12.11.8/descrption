@@ -1,0 +1,1 @@
+This exercise has two files, one is the wordtools module, which has the word manipulation functions and the test file. The test file imports the module and performs tests on each function.

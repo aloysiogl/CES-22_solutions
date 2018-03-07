@@ -1,3 +1,5 @@
+#!/usr/bin/python3
+
 import turtle  # Tess becomes a traffic light.
 
 time = 500
