@@ -1,0 +1,1 @@
+This program solves boards of size 4, 12 and 16. From running tests its concluded that boards of size 16 are the maximum usually solved under a minute
