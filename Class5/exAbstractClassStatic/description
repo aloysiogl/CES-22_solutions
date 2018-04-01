@@ -1,0 +1,6 @@
+This is an example of game object implementation (object used in most games). This implementation uses abstract methods
+to make it compulsory to implement start, update and draw methods.
+
+A classmethod is created to acces the class variable game_objects_list.
+
+A static_method is called to extravt a vector from a tronsform element.
