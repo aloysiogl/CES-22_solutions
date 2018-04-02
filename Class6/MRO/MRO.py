@@ -5,16 +5,27 @@ class Shape:
     geometric_type = 'Generic Shape'
 
     def area(self):
+        """
+        Calculates the area of a shape
+        """
+
         raise Exception('Not implemented')
 
     def get_geometric_type(self):
+        """
+        :return: the geometric type
+        """
         return self.geometric_type
 
 
 class Plotter:
 
     def plot(self, ratio, topleft):
-
+        """
+        Plotas a shape
+        :param ratio: the scale
+        :param topleft: the position
+        """
         print('Plotting at {}, ratio {}.'.format(topleft, ratio))
 
 
@@ -33,6 +44,11 @@ class RegularHexagon(RegularPolygon):
     geometric_type = 'Regular Hexagon'
 
     def area(self):
+        """
+        Calculates the area af a hexagon
+        :return: the area
+        """
+
         return 'Hexagon area'
 
 
@@ -40,6 +56,11 @@ class Square(RegularPolygon):
     geometric_type = 'Square'
 
     def area(self):
+        """
+        Calculates the area af a square
+        :return: the area
+        """
+
         return 'Square area'
 
 
