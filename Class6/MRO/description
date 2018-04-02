@@ -1,0 +1,1 @@
+This example tests MRO extending from the class example. Some test couldn't creat a valid MRO, the error messages were presented as comments in the code.
