@@ -1,2 +1,45 @@
 This Python file compares multiprocessing and thereading in two situations. In each one of the situations one of
 both excels.
+
+This example is a simple parallel multiplication of integers using iterative sums. Multiprocessing tens to be better when
+a large number of iterative sums is happening while threading tends to win when the number of sums is small but the number of
+concurrent operations is high.
+
+The result on my machine was (results may vary and it might be needed to adjust the parameters of the comparison
+examples):
+0  times  10 using additions is  0
+1  times  10 using additions is  10
+2  times  10 using additions is  20
+3  times  10 using additions is  30
+4  times  10 using additions is  40
+5  times  10 using additions is  50
+6  times  10 using additions is  60
+7  times  10 using additions is  70
+8  times  10 using additions is  80
+9  times  10 using additions is  90
+10  times  10 using additions is  100
+0  times  10 using additions is  0
+1  times  10 using additions is  10
+2  times  10 using additions is  20
+3  times  10 using additions is  30
+4  times  10 using additions is  40
+5  times  10 using additions is  50
+6  times  10 using additions is  60
+7  times  10 using additions is  70
+8  times  10 using additions is  80
+9  times  10 using additions is  90
+10  times  10 using additions is  100
+0  times  10000 using additions is  0
+1  times  10000 using additions is  10000
+2  times  10000 using additions is  20000
+0  times  10000 using additions is  0
+1  times  10000 using additions is  10000
+2  times  10000 using additions is  20000
+First comparison multiprocessing took  0.011998000000000009  and threading took  0.002921000000000007  threading was better
+First comparison multiprocessing took  0.0020799999999999985  and threading took  0.007789999999999991  multiprocessing was better.
+
+Process finished with exit code 0
+
+This result put in evidence the fact that multiprocessing takes advantage of the use of multiple processors. This means
+that for resource demanding operations is better to use multiprocessing. In the other hand for smaller and simpler operations
+threading wins.

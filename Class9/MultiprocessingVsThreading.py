@@ -5,86 +5,93 @@ import multiprocessing
 import time
 
 
-def worker(num):
-    """This worker  ultiplies a nuber using a"""
-    paralel_square = num*num
-    print ('The square of ', num, ' is ', paralel_square)
+def worker(num, multiply_by):
+    """
+    This worker multiplies a number using additions
+    :param num: the number
+    :param multiply_by: the multiplying factor
+    """
+
+    tot = 0
+
+    for j in range(multiply_by):
+        tot += num
+
+    print(num, ' times ', multiply_by, 'using additions is ', tot)
     return
 
 
-jobs = []
-
-start = time.clock()
-
-for i in range(5):
-    p = multiprocessing.Process(target=worker_1, args=(i, ))
-    jobs.append(p)
-    p.start()
-    p.join()
-
-
-print('Time for parallel square range 0-4, multiprocessing: ',  str(time.clock() - start))
-
-
-class Thread1(Thread):
-    def __init__(self, num):
+class Threading(Thread):
+    def __init__(self, num, multiply_by):
+        """
+        This thread multiplies a number using additions
+        :param num: the number
+        :param multiply_by: the multiplying factor
+        """
         Thread.__init__(self)
         self.num = num
+        self.mult = multiply_by
 
     def run(self):
-        paralel_square = self.num * self.num
-        print('The square of ', self.num, ' is ', paralel_square)
+
+        tot = 0
+
+        for j in range(self.mult):
+            tot += self.num
+
+        print(self.num, ' times ', self.mult, 'using additions is ', tot)
+        return
 
 
-start = time.clock()
+def compare(num, mult):
+    """
+    Compares threading and multiprocessing for a multiplication using sums example
+    :param num: max number to multiply (starting from 0 to num)
+    :param mult: the multiplication factor
+    :return: a tuple of times (first the multiprocessing time and second the threading time) and last return is a message
+    """
 
-for i in range(5):
-    t = Thread1(i)
-    t.start()
-    t.join()
+    # Multiprocessing test
 
-print('Time for parallel square range 0-4, threading: ',  str(time.clock() - start))
+    start = time.clock()
 
-def worker_2(num):
-    """worker function"""
-    paralel_sum = 0
-    for i in range(10000):
-        paralel_sum += num
-    print(num, ' times 10000 using additions is ', paralel_sum)
-    return
+    jobs = []
 
+    for i in range(num+1):
+        p = multiprocessing.Process(target=worker, args=(i, mult, ))
+        jobs.append(p)
+        p.start()
+        p.join()
 
-jobs = []
+    time_m = time.clock() - start
 
-start = time.clock()
+    # Threading test
 
-for i in range(2):
-    p = multiprocessing.Process(target=worker_2, args=(i, ))
-    jobs.append(p)
-    p.start()
-    p.join()
+    start = time.clock()
 
+    for i in range(num+1):
+        t = Threading(i, mult)
+        t.start()
+        t.join()
 
-print('Time for parallel square range 0-4, multiprocessing: ',  str(time.clock() - start))
+    time_t = time.clock() - start
 
+    # Comparison message
 
-class Thread2(Thread):
-    def __init__(self, num):
-        Thread.__init__(self)
-        self.num = num
+    message = ""
 
-    def run(self):
-        paralel_sum = 0
-        for i in range(10000):
-            paralel_sum += self.num
-        print(self.num, ' times 10000 using additions is ', paralel_sum)
+    if time_t > time_m:
+        message = " multiprocessing was better."
+    else:
+        message = " threading was better"
+
+    # Returning the comparison of times
+
+    return time_m, time_t, message
 
 
-start = time.clock()
+comparison1 = compare(10, 10)
+comparison2 = compare(2, 10000)
 
-for i in range(2):
-    t = Thread2(i)
-    t.start()
-    t.join()
-
-print('Time for parallel square range 0-4, threading: ',  str(time.clock() - start))
+print("First comparison multiprocessing took ", comparison1[0], ' and threading took ', comparison1[1], comparison1[2])
+print("First comparison multiprocessing took ", comparison2[0], ' and threading took ', comparison2[1], comparison2[2])
