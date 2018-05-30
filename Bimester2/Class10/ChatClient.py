@@ -2,6 +2,7 @@
 
 from socket import *
 import threading
+import sys
 
 
 # Defaults local host
@@ -17,20 +18,21 @@ ADDR = (HOST, PORT)
 tcpCliSock.connect(ADDR)
 host=tcpCliSock.getsockname()
 
-# Boolean to format enters
+# Booleans to format enters and end the client
 enter = True
+over = False
 
 
 def listener():
     """Method for listening to new messages"""
 
-    global enter, name
+    global enter, name, over
 
     # First data
     data = tcpCliSock.recv(BUFSIZ)
     print(data.decode('utf-8'))
 
-    while True:
+    while not over:
         data = tcpCliSock.recv(BUFSIZ)
         if not data:
             break
@@ -43,19 +45,25 @@ def listener():
 
 if __name__ == "__main__":
 
-    threading.Thread(target=listener).start()
+    listener = threading.Thread(target=listener)
 
-    first_input = True
+    try:
+        listener.start()
 
-    while True:
-        if first_input:
-            name = input()
-            data = name.encode('utf-8')
-            first_input = False
-        else:
-            data = (input('%s>\n' % name)).encode('utf-8')
-            enter = True
-        if not data:
-            break
-        tcpCliSock.send(data)
-    tcpCliSock.close()
+        first_input = True
+
+        while True:
+            if first_input:
+                name = input()
+                data = name.encode('utf-8')
+                first_input = False
+            else:
+                data = (input('%s>\n' % name)).encode('utf-8')
+                enter = True
+            if not data:
+                break
+            tcpCliSock.send(data)
+        tcpCliSock.close()
+    except:
+        over = True
+        print("Closing client...")
