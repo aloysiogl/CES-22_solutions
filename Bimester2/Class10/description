@@ -1,0 +1,8 @@
+This is an example of chat server. There are two programs the server and the client.
+
+To run everything run the script: run_server_and_clients.sh
+
+In the script it is assumed that to access python3 you use python3 command. If your python3 is installed under the name python,
+just make this change in the script.
+
+The script launches two clients and one server and the clients are able to talk to each other.
