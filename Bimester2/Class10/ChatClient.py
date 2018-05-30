@@ -66,4 +66,5 @@ if __name__ == "__main__":
         tcpCliSock.close()
     except:
         over = True
+        tcpCliSock.send("##close##".encode('utf-8'))
         print("Closing client...")

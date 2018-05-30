@@ -52,6 +52,8 @@ class ChatServer(object):
             try:
                 data = client.recv(size)
                 if data:
+                    if data.decode('utf-8') == "##close##":
+                        client.send("Ending client...".encode('utf-8'))
                     str_data = data.decode('utf-8')
                     str_data = name + ">" + str_data
                     print(str_data)
