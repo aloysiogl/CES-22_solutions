@@ -2,7 +2,6 @@
 
 from socket import *
 import threading
-import sys
 
 
 # Defaults local host

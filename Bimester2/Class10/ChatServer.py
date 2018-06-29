@@ -2,7 +2,6 @@
 
 import socket
 import threading
-from time import ctime
 
 # The default port for the server
 PORT = 21567
