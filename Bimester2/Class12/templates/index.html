@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Aloysio-FileServer</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='css/listr.pack.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/jquery.filer.css')}}">
+</head>
+<body>
+<div class="breadcrumb">
+    {{message}}
+</div>
+<form action="" method="post">
+    <p><input class="btn btn-secondary text-muted" type=text name=username /></p>
+    <p><input class="btn btn-secondary text-muted" type=submit value=Login /></p>
+</form>
+</body>
+</html>

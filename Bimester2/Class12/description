@@ -1,0 +1,13 @@
+Simple file server made using flask. It's possible to view files on it.
+
+The frontend was made using https://github.com/Wildog/flask-file-server as base.
+
+The backend was made from scratch.
+
+1.The server uses sessions to keep the user logged in.
+
+2. The server uses cookies the store the selection to see supported files.
+
+3. The server meets the requirement of showing files.
+
+Therefore this fulfills the requirements of class 12.

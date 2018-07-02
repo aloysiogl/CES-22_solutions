@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Files</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='css/listr.pack.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/jquery.filer.css')}}">
+
+</head>
+<body dir="ltr">
+<div class="breadcrumb">
+    Basic file server made by Aloysio Galvão Lopes
+</div>
+<div class="container">
+
+    <!--button group-->
+    <div class="pull-sm-right">
+        <div class="btn-group">
+            {% if showall == 'yes' %}
+            <a href="/setcookieshownot" class="btn btn-secondary text-muted">Hide unsupported</a>
+            {% else %}
+            <a href="/setcookieshow" class="btn btn-secondary text-muted">Show all</a>
+            {% endif %}
+        </div>
+    </div>
+    <!--button group-->
+
+    <!--logout-->
+    <div class="pull-sm-right">
+        <a href="/logout"><button class="btn btn-secondary text-muted">
+            Logout
+        </button></a>
+    </div>
+    <!--logout-->
+
+    <!--upload files-->
+    <div class="pull-sm-left">
+        <form action="/files" method="post" enctype="multipart/form-data">
+            <input class="btn btn-secondary " type="file" name="files[]" multiple="multiple"/>
+            <input  class="btn btn-secondary text-muted" type="submit"/>
+        </form>
+    </div>
+    <!--upload files-->
+
+
+    <!--table of items-->
+    <table id="listr-table" class="table table-hover">
+        <tbody>
+        {%for item in contents%}
+        <tr>
+            <td class="text-xs-left " data-sort-value="file-{{item.name | lower}}">
+                <a {% if item.name | data_fmt not in ['unknown', 'archive'] %} data-toggle="modal"
+                data-target="#viewer-modal" data-type="{{item.name | data_fmt}}" {% endif %}
+                href="/files/{{item.name}}">{{item.name}}</a>
+            </td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <!--table of items-->
+
+
+    <!--file viewer-->
+    <div class="modal fade" id="viewer-modal" tabindex="-1" role="dialog" aria-labelledby="file-name"
+         aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close pull-xs-right" data-dismiss="modal" aria-hidden="true">&times;
+                    </button>
+                    <h4 class="modal-title text-left" id="file-name">&nbsp;</h4>
+                    <small class="text-muted" id="file-meta"></small>
+                </div>
+                <div class="modal-body"></div>
+                <div class="modal-footer">
+                    <div class="pull-xs-left">
+                        <button type="button" class="btn btn-link highlight hidden-xs-up">Apply syntax highlighting
+                        </button>
+                    </div>
+                    <div class="pull-xs-right">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+
+                        <div class="btn-group">
+                            <a href="#" class="btn btn-primary fullview" download>Download</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--file viewer-->
+
+    <!--scripts-->
+    <script type="text/javascript" src="{{url_for('static', filename='js/jquery.min.js')}}"></script>
+    <script type="text/javascript" src="{{url_for('static', filename='js/bootstrap.min.js')}}"></script>
+    <script type="text/javascript" src="{{url_for('static', filename='js/listr.pack.js')}}"></script>
+    <!--scripts-->
+
+</div>
+</body>
+</html>
