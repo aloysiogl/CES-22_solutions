@@ -1,0 +1,30 @@
+This class objective is to identify where SOLID principles could be used in the project. Therefore it will be written in portuguese.
+
+Como o projeto foi feito em django, ele foi dividido em apps. Há, basicamente, quatro apps: authentication, editor,
+frontend e o app principal.
+
+-Single Responsibility:
+Esse princípio foi utilizado extensivamente durante o projeto, principalmente no backend. A autenticação só tem uma classe com a única responsabilidade
+de retornar uma visualização de autenticação. O editor tem classes específicas responsáveis por administrar cada endpoint de comunicação via requisições ajax.
+No frontend as responsabilidades poderiam ter sido mais distribuídas, as quais ficaram muito centradas na visualização central do editor.
+
+-Open Closed Design:
+Como a própria estrutura do python facilita a modificação, as classes foram feitas, no backend, de forma aberta a modificação.
+Isso poderia ser modificado de forma a tornar o porjeto fechado a modificação. O projeto é, porém, aberto à extensão. Foram,
+além disso, realizadas poucas modificações. Extensões foram utilizadas no frontend em javascript (react).
+
+-Liskov Substitution:
+Esse princípio foi extensivamente usado quando se utilizavam subclasses. Dessa maneira, em grande parte do projeto, as subclasses
+apenas extendem e não retirem funcionalidades.
+
+-Interface Segregation:
+No projeto, foram implementadas poucas interfaces. Dessa forma, para fazer uso mais extensivo desse princpipio, seria necessário fazer
+uso maior de interfaces.
+
+-Dependency Inversion:
+Esse princípio foi pouco utilizado no projeto. Praticamente não foram utilizadas abstrações. Dessa maneira, quando realizávamos modificações
+na estrutura da comunicação, o alto nível era bastante afetado. Esse princípio poderia ser mais utilizado no frontend, o que facilitaria
+a implementação da comunicação com o backend. sem grandes alterações na estrutura do frontend (que em princípio funcionava independentemente do backend).
+
+O projeto pode ser acessado em: https://github.com/CarlosMatheus/PyginWeb
+
